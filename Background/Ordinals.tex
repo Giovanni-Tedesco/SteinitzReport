@@ -14,45 +14,23 @@ some other concepts first.
     \item Transitive: If $a < b$ and $b < c$ then $a < c$.
     \item Linearity: For all $x,y \in X$ either $x < y, x = y$ or $y < x$.
   \end{enumerate}
-
-  If $(X, <)$ is a linear order we say that it is dense if for all $x, y$ there
-  is a $z$ such that $x < z < y$.
 \end{defn}
 
-To solidify this idea let's think of some common examples of linear orders and
-some of the properties that they may have. 
-
-\begin{ex}
-  The natural numbers with their usual ordering is an example of a linear
-  order. Notice that this is not dense as, for example, there are no numbers
-  between 1 and 2.
-\end{ex}
-\begin{ex}
-  $\mathbb{Q}$ with it's usual ordering is dense however notice that between
-  any two numbers we can pick a midpoint between them.
-\end{ex}
-
-With these examples in mind we consider the next special case. Well orders.
-
 \begin{defn}[Well-Orders]
-  A linear order $(X, <)$ is said to be a well order if ever $S \subseteq X$
-  $S$ has a minimal element.
+  A linear order $(X, <)$ is said to be a well order if every $S \subseteq X$
+  has a minimal element.
 \end{defn}
 
 Consider the two examples above. We see that while they are both certainly
-linear orders, the natural numbers are a well order and the rationals are
-not. For example the set $(0,1) \cap \mathbb{Q}$ does not have a minimal
-element, while every set contained within the naturals certainly does. An
-interesting thing to notice is that the integers do not form a well order
-either. For example the set $S = \{n \in \mathbb{Z}: n < 0\}$ is a set without
-a minimal element.
+linear orders, we see that the natural numbers are a well order as any subset
+of the natural numbers has a minimal element. Notice that neither $\mathbb{Q}$
+or $\mathbb{Z}$ with their usual ordering are well orders as neither
+$\mathbb{Q}$ nor $\mathbb{Z}$ has a minimal element.
 
-\begin{remark}
-  Something that is worth mentioning is that by the Axiom of Choice we can
-  place a well order on every set. The above examples of $\mathbb{Q}$ and
-  $\mathbb{Z}$ have well orders, but that does not mean that they are well
-  ordered in their usual order.
-\end{remark}
+Something that is worth mentioning is that by the Axiom of Choice we can
+place a well order on every set. The above examples of $\mathbb{Q}$ and
+$\mathbb{Z}$ have well orders, but that does not mean that they are well
+ordered in their usual order.
 
 Let's look at the ``set theorists natural numbers''. One of the main things we
 can try and do to motivate the definition of an ordinal is to turn everything

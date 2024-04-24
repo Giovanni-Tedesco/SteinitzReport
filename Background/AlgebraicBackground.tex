@@ -80,7 +80,7 @@ terms of the ring of polynomials.
 We first notice that we can lift isomorphisms between fields to an isomorphism
 between their polynomial rings. 
 
-\begin{lemma}
+\begin{lemma}\label{lemma:extendtoring}
   Let $F$ and $K$ be fields and if $\phi: F \to K$ be an isomorphism between
   them then there exists a (ring-)isomorphism $\overline{\phi}: F[x] \to
   K[x]$. Moreover, if $f(x)$ is irreducible over $F$ then $\overline{\phi}(f)$ 
@@ -108,7 +108,7 @@ between their polynomial rings.
 
 \begin{restatable}{propn}{algextend}
 \label{propn:algextend}
-  If $F$ and $K$ are fields and there is an isomorphism $\phi: F \to K$ then if
+  If $F$ and $K$ are fields and there is an isomorphism $\phi: F \to K$ and
   $\alpha$ is algebraic over $F$ then there is a $\beta$ algebraic over $K$ 
   such that $\phi$ can be extended to an isomorphism $\overline{\phi}:
   F(\alpha) \to K(\beta)$
@@ -120,49 +120,53 @@ between their polynomial rings.
   an irreducible polynomial 
   \[
     \overline{m_{\alpha}}(x) = x^{n} + \phi(a_{n-1})x^{n-1} + \ldots
-    + \phi(a_1)x + a_0 \in E[x]
+    + \phi(a_1)x + a_0 \in K[x]
   .\] 
-  Since this polynomial is irreducible of degree $n$ it is the minimal
-  polynomial of some $\beta$ which is algebraic over $E$. Now considering
-  $F(\alpha)$ and $E(\beta)$ we see that we can extend $\phi$ to an isomorphism
-   $\overline{\phi}: F(\alpha) \to F(\beta)$ by $\alpha \mapsto \beta$. This is
-   clearly an isomorphism as we needed.
+  Now by \cref{lemma:extendtoring} we get an isomorphism $\overline{\phi}: F[x]
+  \to K[x]$ we notice that under this map the ideal $(m_{\alpha})$ is mapped to
+  $(\overline{m_{\alpha}})$. Lastly we note that $F[x]/(m_{\alpha})$ is
+  isomorphic to $F(\alpha)$ and $K[x]/(\overline{m_{\alpha})}$ is isomorphic to
+  $K[\beta]$ by definition, label these isomorphisms $\psi_{\alpha}$ and
+  $\psi_{\beta}$ respectively. This gives the following diagram:
+%  \begin{equation}
+%  \begin{tikzcd}
+%    F \arrow[r, "\cong"] \arrow[d, hook]& K \arrow[d, hook] \\ 
+%    F[x] \arrow[r,"\cong"] \arrow[d, "\pi"] & K[x] \arrow[d,"\pi"] \\
+%    F[x]/(m_{\alpha}) \arrow[r, "\sigma"] \arrow[d, "\psi_{\alpha}"] & 
+%                                          K[x]/(\overline{m_{\alpha}})
+%                                          \arrow[d,"\psi_{\beta}"]\\
+%    F(\alpha) \arrow[r] & K(\beta) \\
+%  \end{tikzcd}
+%  \end{equation}
+  \begin{equation}
+  \begin{tikzcd}
+    F  \arrow[r,hook] \arrow[d,"\phi"] & F[x] \arrow[r] \arrow[d,"\overline{\phi}"] 
+                                        & F[x]/(m_{\alpha})
+    \arrow[r,"\psi_{\alpha}"] \arrow[d,"\sigma"] & F(\alpha) \arrow[d,dashed] \\
+    K \arrow[r,hook] & K[x] \arrow[r] & K[x]/(\overline{m_{\alpha}})
+    \arrow[r,"\psi_{\beta}"] & K(\beta)
+  \end{tikzcd}
+  \end{equation}
+  
+  We notice that the map $\sigma: F[x]/(m_{\alpha}) \to
+  K[x]/(\overline{m_{\alpha}})$ is an isomorphism since $\overline{\phi}$ is an
+  isomorphism. Now reading off the diagram we get that the map
+  $\psi_{\beta}g\psi_{\alpha}^{-1}$ is the isomorphism we require.
 \end{proof}
 
 Moving on from algebraic numbers we are now interested in exploring the second
-class, trancendental numbers. This case is slightly more complicated.
-A trancendental number is something which is not an algebraic number. Loosely
-speaking these are all numbers which are not the root of any polynomial over
-the ground field. Classical examples of these are $e$ and $\pi$, however
-showing that either of these are actually trancendental is quite difficult. The
-classical example of where these come into play is considering how $\mathbb{Q}$
-embeds into $\mathbb{R}$. We see that there are elements of $\mathbb{R}$, such
-as $e$ and $\pi$ which are not in $\mathbb{Q}$. Which cannot be expressed by
-polynomials with rational coefficients. 
-
+class, trancendental numbers.  These are all numbers which are not the root of 
+any polynomial over the ground field. 
 
 \begin{defn}[Trancendental Number]
   Suppose that $E$ is some field extension of $F$ and let $\alpha \in E$. We
-  say that $\alpha$ is trancendental if there are no polynomials  $p(x) \in
-  F[x]$ such that $p(\alpha) = 0$ when viewed as a polynomial over $F$.
+  say that $\alpha$ is trancendental over $F$ if it is not algebraic over $F$.
 \end{defn}
 
-\begin{remark}
-  It is important to notice here that the choice of ground field and extension
-  field matters a lot. For example in the case of $\mathbb{R}$ over
-  $\mathbb{Q}$ we have that $\pi$ is trancendental over $\mathbb{Q}$ as there
-  are no polynomials in $\mathbb{Q}[x]$ which have $\pi$ as a root. However
-  in the case of $\mathbb{C}$ over $\mathbb{R}$ then $\pi$ is no longer
-  trancendental as it is the root of $x - \pi$. Actually $\mathbb{C}$ is an
-  algebraic extension of $\mathbb{R}$ and so there are no trancendental
-  numbers.
-\end{remark}
-
 \begin{defn}[Trancendental Extension]
-  Similar to the case of algebraic extensions, there are also trancendental
-  extensions. Namely if $F$ is a field, we say that a field extension $E$ over
-  $F$ is trancendental if there is some $\alpha \in E$ such that $\alpha$ is
-  trancendental over $F$.
+  Similar to the case of algebraic extensions suppose that $\alpha$ is
+  trancendental over $F$ then we define $F(\alpha)$ as the smallest field
+  containing both $\alpha$ and $F$.
 \end{defn}
 
 Recall that our goal is to prove an analogous result to \cref{propn:algextend}
@@ -192,56 +196,27 @@ strictly think about them as formal expresstions.
 \begin{defn}[Rational Polynomials]
   Let $F$ be a field, we define $F(x)$ as
   \[
-    F(x) := \{\frac{p(x)}{q(x)}: p(x), q(x) \in F[x]\} 
+    F(x) := \left\{\frac{p(x)}{q(x)}: p(x), q(x) \in F[x]\right\} 
   .\] 
   This is known as the rational polynomials over $F[x]$.
 \end{defn}
-
-\begin{remark}
-  Note the difference between $F(x)$ and $F(\alpha)$, the former denotes the
-  rational polynomials. The latter denotes the extension of $F$ by an algebraic
-  number $\alpha$.
-\end{remark}
-
-\begin{remark}
-  It is important to keep in mind that $F(x)$ consists of purely formal
-  expressions. For example
-  \begin{equation}\label{eq:fracex1}
-    \frac{x-1}{x^2 - 1}
-  \end{equation}
-  and
-  \begin{equation}\label{eq:fracex2}
-  \frac{1}{x + 1}
-  \end{equation}
-  Are not the same element in this field. Despite the fact that once one
-  factors (\ref{eq:fracex1}) we get (\ref{eq:fracex2}). Since these
-  are \textbf{purely formal expressions}. They are not the same.
-\end{remark}
-
-Notice that if $\alpha$ is some algebraic number over $F$ then there is
-a natural map $ev_{\alpha}: F[x] \to F(\alpha)$ given by $p(x) \mapsto
-p(\alpha)$. This map is of course not injective as every polynomial which
-contains $m_{\alpha}$ as a factor is sent to 0. 
-
-This type of evaluation map is helpful since it allows us to recognize
-$F(\alpha)$ as a quotient of $F[x]$. In the case of trancendental numbers we
-are going to consider a similar map. Suppose that $\beta$ is trancendental over
-$F$ then we define the map $ev_{\beta}: F(x) \to F(\beta)$ which is given by 
-\[
-  \frac{p(x)}{q(x)} \mapsto \frac{p(\beta)}{q(\beta)}
-.\] 
-First note that if $\beta$ was not trancendental then this map is not injective
-(or well defined) as we end up dividing by 0 whenever $m_{\alpha}(x) \mid
-q(x)$. However since $\beta$ is not trancendental, this map is not only
-injective, but it is infact an isomorphism! Since $F(x)$ is a field by
-construction and $F(\beta)$ is also a field. Thus $ev_{\beta}$ is certainly
-surjective. Moreover, it is also an isomorphism as it is also clearly
-surjective. From this we have proven the following result:
 
 \begin{lemma}\label{lemma:isotoquot}
   If $F$ is a field and $\beta$ is trancendental over $F$ then $F(x) \cong
   F(\beta)$ 
 \end{lemma}
+\begin{proof}
+  We define the map $ev_{\beta}: F(x) \to F(\beta)$ which is given by 
+\[
+  \frac{p(x)}{q(x)} \mapsto \frac{p(\beta)}{q(\beta)}
+  .\] 
+  First note that if $\beta$ was not trancendental then this map is not injective
+  (or well defined) as we end up dividing by 0 whenever $m_{\alpha}(x) \mid
+  q(x)$. However since $\beta$ is not trancendental, this map is not only
+  injective, but it is infact an isomorphism! Since $F(x)$ is a field by
+  construction and $F(\beta)$ is also a field. Thus $ev_{\beta}$ is certainly
+  surjective. Moreover, it is also an isomorphism as it is also clearly
+\end{proof}
 
 Lastly we are going to need a lemma that allows us to lift isomorphisms between
 fields to isomorphisms between their rational polynomials
@@ -259,12 +234,11 @@ fields to isomorphisms between their rational polynomials
 Now knowing this we can prove our main result for trancendental numbers.
 
 \begin{restatable}{propn}{transextend}
-  Let $F, K, M, N$ be fields such that $|M| = |N|$ and  
-  $M$ (resp. $N$) is a trancendental extension of $F$ (resp. $K$) 
-  and $|F| < |M|$ (resp $|K| < |N|$) then if $\phi: F \to K$ is an isomorphism
-  and $\alpha \in M\setminus F$ is transendental over $F$ there is a $\beta \in
-  N \setminus K$ such that $\phi$ can be extended to an isomorphism
-  $\overline{\phi}: F(\alpha) \to K(\beta)$.
+  Let $M$ and $N$ be field extensions of $F$ and $K$ respectively.
+  If $\phi: F \to K$ is an isomorphism and $\alpha \in M \setminus F$ 
+  is trancendental over $F$ then there is $\beta \in N \setminus K$ which is
+  trancendental over $K$ such that $\phi$ can be extended to an isomorphism 
+  $\overline{\phi}: F(\alpha) \to K(\beta)$
 \end{restatable}
 \begin{proof}
   Since we know that $|K| < |N|$ by \cref{propn:existtrans} there is an
