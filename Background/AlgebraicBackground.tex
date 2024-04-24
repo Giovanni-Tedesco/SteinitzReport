@@ -1,0 +1,302 @@
+We begin with some of the relevant algebraic background which is needed to
+understand both the statment of the problem and the proof. First recall the
+definition of a field:
+
+\begin{propn}
+  Every field homomorphism is injective 
+\end{propn}
+\begin{proof}
+  Suppose that $F, K$ are fields and let $\phi: F \to K$ a field homomorphism
+  between them. Let $a, b \in F$ and suppose that $\phi(a) = \phi(b)$. This
+  implies that $\phi(a) - \phi(b) = 0$ so $\phi(a - b) = 0$ if $a \neq b$ then
+  this means that $\phi(a-b) = 0$ for $a - b \neq 0$. Taking $c = a-b$ then we
+  know that $\phi(cc^{-1}) = 1 = \phi(c)\phi(c^{-1}) = 0$ which is
+  a contradiction. Thus $a = b$ necessarily and so $\phi$ is injective.
+\end{proof}
+
+This fact that field homomorphisms are always injective lies at the heart of
+field theory, in particular it is the reason why we are able to focus so
+heavily on what are known as field extensions. 
+
+\begin{defn}[Field Extension]
+  We say that $E$ is a field extension of $F$ if there is an injective field
+  homomorphism $\phi: F \to E$
+\end{defn}
+
+Field extensions come in two main flavours: algebraic extensions and
+trancendental extensions. We focus on the former first.
+
+\begin{defn}[Polynomial Ring over $F$]
+  Suppose that $F$ is a field we define the polynomial ring  $F[x]$ over $F$ as
+  \[
+    F[x] := \left\{\sum_{i=1}^{n}a_{i}x^{i}: a_{i} \in F, n \in
+    \mathbb{N}\right\} 
+  .\]
+  We take the operations to be the usual polynomial addition and product.
+\end{defn}
+
+\begin{defn}[Irreducible]
+  We say that a polynomial $p(x) \in F[x]$ is irreducible if it cannot be
+  factored into two polynomials of lesser degere.
+\end{defn}
+
+This notion of irreducibility is one that we are already very familiar with.
+Consider the example of $x^2 + 1$ as a polynomial over $\mathbb{Q}$. Clearly
+this polynomial has no factors over $\mathbb{Q}$ (in particular since $i
+\not\in \mathbb{Q}$) and so as a result we know
+that we cannot factor this polynomial any further. A similar example is that of
+$x^2 - 2$. This polynomial taken over $\mathbb{R}$ has a root of $\sqrt{2}$
+however $\sqrt{2}$ is famously not a rational number. Something we might wish
+to do now is ``extend'' $\mathbb{Q}$ in order to contain these elments so that
+these polynomials factor over them.
+
+\begin{defn}[Algebraic Numbers]
+  Let $F$ be a field and $E$ a field extension of $F$.
+  We say that $\alpha \in E$ is algebraic over a field $F$ if there is a 
+  polynomial $p(x) \in F[x]$ such that $p(\alpha) = 0$ when viewed as
+  a polynomial over $E$.
+\end{defn}
+
+Without going into too many details about how these extensions work we are
+going to loosely define what it means to be an algebraic extension of $F$. Just
+know that this is a process that can be done rigorously for any irreducible
+polynomial in $F[x]$. The smallest (in degree) irreducible polynomial
+containing $\alpha$ as a root is known as the minimal polynomial of $\alpha$
+and is denoted $m_{\alpha}$.
+
+\begin{defn}[Algebraic Extension]
+  Suppose that $\alpha$ is algebraic over $F$. We define $F(\alpha)$ as the
+  smallest field which contains $F$ and $\alpha$.
+\end{defn}
+
+We know that algebraic numbers satsify some polynomial $p(x)$ over $F$, 
+so we can think of the field $F(\alpha)$ as adding in the root of this
+polynomial. One important fact that we are going to make heavy use of later is
+that we are able to lift isomorphisms of fields up to isomorphisms of their
+extensions. In the case of algebraic extensions this is relatively
+straightforward since we know ``exactly'' what algebraic numbers look like in
+terms of the ring of polynomials. 
+
+We first notice that we can lift isomorphisms between fields to an isomorphism
+between their polynomial rings. 
+
+\begin{lemma}
+  Let $F$ and $K$ be fields and if $\phi: F \to K$ be an isomorphism between
+  them then there exists a (ring-)isomorphism $\overline{\phi}: F[x] \to
+  K[x]$. Moreover, if $f(x)$ is irreducible over $F$ then $\overline{\phi}(f)$ 
+  is irreducible over $K$.
+\end{lemma}
+%\begin{proof}
+%  We define $\overline{\phi}: F[x] \to K[x]$ by
+%  \[
+%  f(x) = \sum_{i=1}^{n} a_{i}x^{i} \mapsto \sum_{i=1}^{n} \phi(a_{i})x^{i}
+%  .\] 
+%  This is an isomorphism because $\phi$ is an isomorphism (details left as an
+%  exercise to the reader). Now suppose that $f$ is an irreducible polynomial
+%  over $F$ and suppose that $\overline{\phi}(f)$ is not irreducible. This means
+%  that there are polynomials $a(x), b(x)$ such that $\overline{\phi}(f)(x)
+%  = a(x)b(x)$. However this means that
+%  \[
+%  f = \overline{\phi}^{-1}(\overline{\phi}(f)) = \overline{\phi}^{-1}(a(x)b(x))
+%  = \overline{\phi}^{-1}(a(x))\overline{\phi}^{-1}(b(x))
+%  .\] 
+%  This implies that one of $\overline{\phi}^{-1}(a(x)),
+%  \overline{\phi}^{-1}(b(x))$ must be the identity map and so one of $a(x)$ or
+%  $b(x)$ is identity. Thus $\overline{\phi}(f)$ is irreducible as needed.
+%\end{proof}
+
+
+\begin{restatable}{propn}{algextend}
+\label{propn:algextend}
+  If $F$ and $K$ are fields and there is an isomorphism $\phi: F \to K$ then if
+  $\alpha$ is algebraic over $F$ then there is a $\beta$ algebraic over $K$ 
+  such that $\phi$ can be extended to an isomorphism $\overline{\phi}:
+  F(\alpha) \to K(\beta)$
+\end{restatable}
+\begin{proof}
+  If $\alpha$ is algebraic over $F$ then we know that $\alpha$ is the root of
+  some minimal polynomial $m_{\alpha}(x) = x^{n} + a_{n-1}x^{n-1} + \ldots
+  + a_1x + a_0 \in F[x]$. Now since $\phi$ is an isomorphism of fields we get
+  an irreducible polynomial 
+  \[
+    \overline{m_{\alpha}}(x) = x^{n} + \phi(a_{n-1})x^{n-1} + \ldots
+    + \phi(a_1)x + a_0 \in E[x]
+  .\] 
+  Since this polynomial is irreducible of degree $n$ it is the minimal
+  polynomial of some $\beta$ which is algebraic over $E$. Now considering
+  $F(\alpha)$ and $E(\beta)$ we see that we can extend $\phi$ to an isomorphism
+   $\overline{\phi}: F(\alpha) \to F(\beta)$ by $\alpha \mapsto \beta$. This is
+   clearly an isomorphism as we needed.
+\end{proof}
+
+Moving on from algebraic numbers we are now interested in exploring the second
+class, trancendental numbers. This case is slightly more complicated.
+A trancendental number is something which is not an algebraic number. Loosely
+speaking these are all numbers which are not the root of any polynomial over
+the ground field. Classical examples of these are $e$ and $\pi$, however
+showing that either of these are actually trancendental is quite difficult. The
+classical example of where these come into play is considering how $\mathbb{Q}$
+embeds into $\mathbb{R}$. We see that there are elements of $\mathbb{R}$, such
+as $e$ and $\pi$ which are not in $\mathbb{Q}$. Which cannot be expressed by
+polynomials with rational coefficients. 
+
+
+\begin{defn}[Trancendental Number]
+  Suppose that $E$ is some field extension of $F$ and let $\alpha \in E$. We
+  say that $\alpha$ is trancendental if there are no polynomials  $p(x) \in
+  F[x]$ such that $p(\alpha) = 0$ when viewed as a polynomial over $F$.
+\end{defn}
+
+\begin{remark}
+  It is important to notice here that the choice of ground field and extension
+  field matters a lot. For example in the case of $\mathbb{R}$ over
+  $\mathbb{Q}$ we have that $\pi$ is trancendental over $\mathbb{Q}$ as there
+  are no polynomials in $\mathbb{Q}[x]$ which have $\pi$ as a root. However
+  in the case of $\mathbb{C}$ over $\mathbb{R}$ then $\pi$ is no longer
+  trancendental as it is the root of $x - \pi$. Actually $\mathbb{C}$ is an
+  algebraic extension of $\mathbb{R}$ and so there are no trancendental
+  numbers.
+\end{remark}
+
+\begin{defn}[Trancendental Extension]
+  Similar to the case of algebraic extensions, there are also trancendental
+  extensions. Namely if $F$ is a field, we say that a field extension $E$ over
+  $F$ is trancendental if there is some $\alpha \in E$ such that $\alpha$ is
+  trancendental over $F$.
+\end{defn}
+
+Recall that our goal is to prove an analogous result to \cref{propn:algextend}
+for trancendental numbers / extensions. In order to do this we are first going
+to need to prove a couple of facts. 
+
+\begin{propn}\label{propn:existtrans}
+  Let $F$ be a field. There are at most $|F|$ many algebraic elements over $F$.
+\end{propn}
+\begin{proof}
+  This is just a counting problem. Each algebraic number $\alpha$ over $F$ is
+  the root of some polynomial $x^{n} + \ldots + a_1x + a_0$. There are at most
+  countably many polynomials in which we have $|F|$ many chocies for
+  coefficients. Thus there are at most $|F|$ many algebraic numbers.
+\end{proof}
+
+This proposition lets us make sense of why there \textit{must} be trancendental
+numbers in $\mathbb{R}$ when viewed as an extension of $\mathbb{Q}$. This is
+because there are uncountably infinitely many real numbers and only countably
+many algebraic numbers over $\mathbb{Q}$. 
+
+The next tool that we are going to need is the quotient field / field of
+fractions associated with the polynomial ring $F[x]$. The details about this
+space can be found in \cite{Dummit_Foote_2004} but for us we are going to
+strictly think about them as formal expresstions.
+
+\begin{defn}[Rational Polynomials]
+  Let $F$ be a field, we define $F(x)$ as
+  \[
+    F(x) := \{\frac{p(x)}{q(x)}: p(x), q(x) \in F[x]\} 
+  .\] 
+  This is known as the rational polynomials over $F[x]$.
+\end{defn}
+
+\begin{remark}
+  Note the difference between $F(x)$ and $F(\alpha)$, the former denotes the
+  rational polynomials. The latter denotes the extension of $F$ by an algebraic
+  number $\alpha$.
+\end{remark}
+
+\begin{remark}
+  It is important to keep in mind that $F(x)$ consists of purely formal
+  expressions. For example
+  \begin{equation}\label{eq:fracex1}
+    \frac{x-1}{x^2 - 1}
+  \end{equation}
+  and
+  \begin{equation}\label{eq:fracex2}
+  \frac{1}{x + 1}
+  \end{equation}
+  Are not the same element in this field. Despite the fact that once one
+  factors (\ref{eq:fracex1}) we get (\ref{eq:fracex2}). Since these
+  are \textbf{purely formal expressions}. They are not the same.
+\end{remark}
+
+Notice that if $\alpha$ is some algebraic number over $F$ then there is
+a natural map $ev_{\alpha}: F[x] \to F(\alpha)$ given by $p(x) \mapsto
+p(\alpha)$. This map is of course not injective as every polynomial which
+contains $m_{\alpha}$ as a factor is sent to 0. 
+
+This type of evaluation map is helpful since it allows us to recognize
+$F(\alpha)$ as a quotient of $F[x]$. In the case of trancendental numbers we
+are going to consider a similar map. Suppose that $\beta$ is trancendental over
+$F$ then we define the map $ev_{\beta}: F(x) \to F(\beta)$ which is given by 
+\[
+  \frac{p(x)}{q(x)} \mapsto \frac{p(\beta)}{q(\beta)}
+.\] 
+First note that if $\beta$ was not trancendental then this map is not injective
+(or well defined) as we end up dividing by 0 whenever $m_{\alpha}(x) \mid
+q(x)$. However since $\beta$ is not trancendental, this map is not only
+injective, but it is infact an isomorphism! Since $F(x)$ is a field by
+construction and $F(\beta)$ is also a field. Thus $ev_{\beta}$ is certainly
+surjective. Moreover, it is also an isomorphism as it is also clearly
+surjective. From this we have proven the following result:
+
+\begin{lemma}\label{lemma:isotoquot}
+  If $F$ is a field and $\beta$ is trancendental over $F$ then $F(x) \cong
+  F(\beta)$ 
+\end{lemma}
+
+Lastly we are going to need a lemma that allows us to lift isomorphisms between
+fields to isomorphisms between their rational polynomials
+
+\begin{lemma}\label{lemma:lifttoquot}
+ Suppose that $F$ and $K$ are fields and $\phi: F \to K$ is an isomorphism.
+ Then $\phi$ can be lifted to an isomorphism $\overline{\phi}: F(x) \to K(x)$. 
+\end{lemma}
+\begin{proof}
+  This follows immediately from the fact that $\phi$ is an isomorphism. We can
+  simply apply $\phi$ to the coefficients of the coefficients of any
+  polynomials. Since equality is done coefficient wise this gives our result.
+\end{proof}
+
+Now knowing this we can prove our main result for trancendental numbers.
+
+\begin{restatable}{propn}{transextend}
+  Let $F, K, M, N$ be fields such that $|M| = |N|$ and  
+  $M$ (resp. $N$) is a trancendental extension of $F$ (resp. $K$) 
+  and $|F| < |M|$ (resp $|K| < |N|$) then if $\phi: F \to K$ is an isomorphism
+  and $\alpha \in M\setminus F$ is transendental over $F$ there is a $\beta \in
+  N \setminus K$ such that $\phi$ can be extended to an isomorphism
+  $\overline{\phi}: F(\alpha) \to K(\beta)$.
+\end{restatable}
+\begin{proof}
+  Since we know that $|K| < |N|$ by \cref{propn:existtrans} there is an
+  element $\beta$ which is trancendental over $K$. Now by
+  \cref{lemma:isotoquot} we have the following:
+  \[
+    F \xhookrightarrow{} F(x) \cong F(\alpha)
+  \] 
+  and
+  \[
+    K \xhookrightarrow{} K(x) \cong K(\beta)
+  .\] 
+  Labelling the isomorphism between $F(x)$ and $F(\alpha)$ as $\psi_{\alpha}$ 
+  and the isomorphism between $K(x)$ and $K(\beta)$ as $\psi_{\beta}$.
+  Additionally by \cref{lemma:lifttoquot} there is an isomorphism $\phi':
+  F(x) \to K(x)$ which lifts $\phi$ to an isomorphism between the rational
+  polynomials. Fromt these we get the following diagram:
+  \begin{equation}
+  \begin{tikzcd}
+    F  \arrow[rr] \arrow[d, hook] & & K \arrow[d, hook] \\
+    F(x) \arrow[rr] \arrow[d, "\psi_{\alpha}"']& & K(x) 
+                                        \arrow[d, "\psi_{\beta}"]
+    \\
+    F(\alpha) \arrow[rr, dashed, "\psi_{\beta}\phi'\psi_{\alpha}^{-1}"'] 
+                                              & & K(\beta)
+  \end{tikzcd}
+  \end{equation}
+  Therefore taking $\overline{\phi}: F(\alpha) \to F(\beta)
+  = \psi_{\beta}\phi'\psi_{\alpha}^{-1}$ gives us the extension we require, as
+  we needed.
+\end{proof}
+
+This result similar to our previous is strong. It allows us to extend
+isomorphisms between fields to isomorphisms between extensions by trancendental
+numbers. 

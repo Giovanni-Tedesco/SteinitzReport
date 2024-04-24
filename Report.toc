@@ -1,0 +1,6 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Background}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Algebraic Background}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Ordinals and Transfinite Induction}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}The Back and Forth Method}{10}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Steinitz's Theorem}{12}{section.2}%

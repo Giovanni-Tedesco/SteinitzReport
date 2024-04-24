@@ -1,0 +1,80 @@
+The actual technique that we are going to use in the proof of Steinitz's
+Theorem is going to be a combination of transfinite induction, and an analogue
+of what is known as a back and forth argument.
+
+A back and forth argument is a useful tool in constructing isomorphisms between
+two structures. In order to talk about these we need to introduce the notion of
+a partial embedding.
+
+\begin{defn}[Partial Embedding]
+  Suppose that $\mathcal{M}$ and $\mathcal{N}$ are $\mathcal{L}$ structures.
+  Suppose that $A \subseteq M$ and $B \subseteq N$. We say that $f: A \to B$ is
+  a partial emebedding if $f \cup \{(c^{\mathcal{M}}, c^{\mathcal{N}})\}$
+  preserves the relations and functions of $\mathcal{L}$ 
+\end{defn}
+
+The general goal now is to build a sequence of partial embeddings $f_{0}
+\subseteq f_{1} \subseteq f_{2} \subseteq \ldots$ such that $f_{i}: A_{i}
+\to B_{i}$ with $A_{i} \subseteq A_{i + 1}$ and $B_{i} \subseteq B_{i + 1}$
+with the additional property that $\bigcup_{i \in \mathbb{N}} A_n = M,
+\bigcup_{i \in \mathbb{N}} B_{i} = N$. Once all of these maps have been defined
+we will be able to define our isomorphism $f: M \to N$ by simply choosing an
+appropriate $A_{n}$ that our input lies in. The question now becomes how do we
+do this?
+
+\begin{remark}
+  Notice that all of these are being done in the countable case. This is fine
+  but is a point that we will return to shortly.
+\end{remark}
+
+The above process can be formulated in many ways but my personal favourite is
+to describe it is through the use of games. Suppose that there are two players,
+at the $i$-th stage of the game, the first player will ``play'' either an
+element $m_{i} \in M$ or an element $n_{i} \in N$ and the goal of player 2 is
+to place this element in the domain by playing an element $n_{i}$ or $m_{i}$
+respectively. Going back and forth in this way gives a sequene of partial
+embeddings $f_{i}$ and sets $A_{i}$ and $B_{i}$ satisfying the conditions that
+we outlined above. Player 2 wins the game if this process can be continued
+indefinitely thus resulting in a map $f: M \to N$. 
+
+\begin{ex}
+We can now give a much weakened proof of Steinitz's Theorem. Suppose that $F$ 
+and $K$ are countable algebraically closed fields (of characteristic 0). 
+We construct our partial isomorphism as follows. Since we know that both $F$ 
+and $K$ contain $\mathbb{Q}$ as a subfield we let $f_{0}: \mathbb{Q} \to
+\mathbb{Q}$ be our first partial isomorphism. Next we let $M = \{\alpha_{i}
+\in F: \alpha_{i} \not\in \mathbb{Q}\}$ and $N = \{\beta_{i} \in N: \beta_{i}
+\not\in \mathbb{Q}\}$ be an enumeration of $M$ and $N$ respectively. 
+Now suppose that on turn 1 Player 1 plays $\alpha_{1} \in M$ (we take this
+without loss of generality, as the case for $\beta_{1} \in N$ is the same)
+then by Proposition \ref{propn:algextend} there is a $\beta_{i} \in N$ such that
+$f_{0}$ can be lifted to an isomorphism $f_{1}: \mathbb{Q}(\alpha_{1}) \to
+\mathbb{Q}(\beta_{i}))$. So we can take $A_{1} = \mathbb{Q}(\alpha_{1})$ and
+$B_{1} = \mathbb{Q}(\beta_{i})$. At the $i$-th turn of the game we can do this
+exact same process again by applying Proposition \ref{propn:algextend}
+regardless of what the first player plays. This gives us a winning strategy for
+the second player and gives us our result as we needed.\\ 
+
+\end{ex}
+
+As we will come to see, the uncountable case is more difficult. The issue now
+is that we need to keep in mind that there is a limit case we need to account
+for. Let  $\mathcal{M}$, $\mathcal{N}$ be two (uncountably) infinite
+$\mathcal{L}$ structures such that $|M| = |N| = \kappa$. Let $\alpha$ be the
+ordinal corresponding to $\kappa$. Our goal is going to be to construct sets
+\[
+  A_0 \subseteq A_1 \subseteq \ldots \subseteq A_{\beta} \subseteq M
+\] 
+and
+\[
+B_0 \subseteq B_1 \subseteq \ldots \subseteq B_{\beta} \subseteq N
+\] 
+and a sequence of partial isomorphisms $f_0 \subseteq f_1 \subseteq \ldots
+f_{\beta} \subseteq \ldots$. With these we would have a full isomorphism  $f:
+\bigcup_{\beta < \alpha} A_{\beta} \to \bigcup_{\beta < \alpha} B_{\beta}$ 
+where $f = \bigcup_{\beta < \alpha} f_{\beta}$ will be our full isomorphism. We
+notice that this is the exact same thing that we want from above. It is more
+difficult to formulate this in terms of games. However coming up with such
+a construction suffices for us to prove that these two sets are isomorphic.
+
+

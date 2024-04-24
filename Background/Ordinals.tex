@@ -1,0 +1,199 @@
+The next tool that we are going to need to use is transfinite induction.
+Intuitively this is a way for us to extend the notion of usual induction on the
+natural numbers and allows us to perform a similar process on using what are
+known as ordinals.
+
+Before we can talk about what ordinals are, it is important for us to introduce
+some other concepts first.
+
+\begin{defn}[Linear Ordering]
+  A linear order is a set $X$ and a relation $< \subseteq X \times X$ that
+  satisfies the following properites:
+  \begin{enumerate}
+    \item Irreflexive: $\neg a < a$
+    \item Transitive: If $a < b$ and $b < c$ then $a < c$.
+    \item Linearity: For all $x,y \in X$ either $x < y, x = y$ or $y < x$.
+  \end{enumerate}
+
+  If $(X, <)$ is a linear order we say that it is dense if for all $x, y$ there
+  is a $z$ such that $x < z < y$.
+\end{defn}
+
+To solidify this idea let's think of some common examples of linear orders and
+some of the properties that they may have. 
+
+\begin{ex}
+  The natural numbers with their usual ordering is an example of a linear
+  order. Notice that this is not dense as, for example, there are no numbers
+  between 1 and 2.
+\end{ex}
+\begin{ex}
+  $\mathbb{Q}$ with it's usual ordering is dense however notice that between
+  any two numbers we can pick a midpoint between them.
+\end{ex}
+
+With these examples in mind we consider the next special case. Well orders.
+
+\begin{defn}[Well-Orders]
+  A linear order $(X, <)$ is said to be a well order if ever $S \subseteq X$
+  $S$ has a minimal element.
+\end{defn}
+
+Consider the two examples above. We see that while they are both certainly
+linear orders, the natural numbers are a well order and the rationals are
+not. For example the set $(0,1) \cap \mathbb{Q}$ does not have a minimal
+element, while every set contained within the naturals certainly does. An
+interesting thing to notice is that the integers do not form a well order
+either. For example the set $S = \{n \in \mathbb{Z}: n < 0\}$ is a set without
+a minimal element.
+
+\begin{remark}
+  Something that is worth mentioning is that by the Axiom of Choice we can
+  place a well order on every set. The above examples of $\mathbb{Q}$ and
+  $\mathbb{Z}$ have well orders, but that does not mean that they are well
+  ordered in their usual order.
+\end{remark}
+
+Let's look at the ``set theorists natural numbers''. One of the main things we
+can try and do to motivate the definition of an ordinal is to turn everything
+we care about working with into sets. The main goal of an ordinal is to
+extend a sort of ``order'' into an (uncountbly) infinite setting. First lets
+encode the natural numbers as sets.
+
+\begin{align*}
+  0 &= \{\} \\
+  1 &= \{\{\}\} \\
+  2 &= \{\{\}, \{\{\}\}\} \\
+  3 &= \{\{\}, \{\{\}, \{\{\} \}\}\} 
+.\end{align*}
+Or we can re-write this as
+\begin{align*}
+  0 &= \{\} \\
+  1 &= \{0\} \\
+  2 &= \{0,1\} \\
+  3 &= \{0,1,2\} 
+.\end{align*}
+
+We can continue this process onwards and it gives us the natural numbers
+$\omega = \{1, 2, 3, \ldots\}$. But where do we go from here? Well naturally we
+can continue on doing what we were doing. Notice that in the previous process
+$n + 1 = n \cup \{n\}$. We are going to do the exact same thing now. We take
+$\omega + 1 = \omega \cup \{\omega\}$. We can again do this infinitely and that
+gives us $\omega + \omega$. Repeating a similar process for multiplication and
+exponentiation and onwards allows us to continue this process further and
+further. Notice that at each step we are doing one of 2 things. We are either
+adding a new set, for example in the case of $\omega + 1$, or we are taking the
+union of many sets, for example $\omega = \bigcup_{n \in \mathbb{N}} n$. Going
+forward these are going to be known respectively as the successor case, and the
+limit case. 
+
+Stepping back for a moment we look at the ``set theorists natural numbers''
+again. Notice here that $2 \in 3$ by the definition of the set but we also have
+that $1 \subseteq 3$ when we look at their definition as sets. This is true
+beyond just the naturals. Notice that $\omega + 1 = \omega \cup \{\omega\}$.
+Thus not only is $\omega \in \omega + 1$ but $\omega \subseteq \omega + 1$.
+
+\begin{defn}[Transitive]
+  A set $X$ is said to be transitive if whenever $x \in X$ then $x \subseteq
+  X$.
+\end{defn}
+
+Notice that the sets we defined above are all transitive. For example $2 \in 3$
+and $2 \subseteq 3$ based on how $2$ and $3$ are defined. 
+
+\begin{defn}[Ordinal]
+  An ordinal is a transitive set $\alpha$ such that $(\alpha, \in)$ is
+  a well-ordering.
+\end{defn}
+
+This in particular tells us that $\alpha = \{\beta: \beta < \alpha\}$. 
+There are two main types of ordinals. Successor ordinals, and limit ordinals.
+
+\begin{defn}[Successor and Limit Ordinals]
+  We say that an ordinal $\beta$ is a successor ordinal if $\beta = \alpha + 1$ 
+  for some ordinal $\alpha$. Ordinals which are not successor ordinals are
+  called limit ordinals.
+\end{defn}
+
+The details about how ordinals work can be found in \cite{Schimmerling2011-li} however for our purposes we are going to assume the following
+facts about ordinals.
+
+\begin{lemma}
+  The class of ordinals is well ordered by inclusion. In particular if
+  $\alpha, \beta$ are any two ordinals then either $\alpha < \beta$, $\beta
+  < \alpha$ or $\alpha = \beta$. Here $<$ is being used interchangably with
+  $\in$.
+\end{lemma}
+
+\begin{lemma}
+  If $\alpha$ is an ordinal then $\alpha + 1 = \alpha \cup \{\alpha\}$ is an
+  ordinal and $\alpha < \alpha + 1$. If $\gamma$ is an ordinal and $A$ is
+  a collection of ordinals such that $\alpha < \gamma$ for all $\alpha \in A$ 
+  then $\beta = \bigcup_{\alpha \in A} \alpha$ is an ordinal and $\beta
+  < \gamma$.
+\end{lemma}
+
+With these facts in mind we are now able to state the most important results
+from this section
+
+\begin{thm}[Transfinite Induction]
+  Suppose that $P(\alpha)$ is a statement in a variable $\alpha$. Assume that
+  for every ordinal $\beta$ we have that
+   \[
+     (\forall \alpha < \beta)\  P(\alpha) \implies P(\beta)
+  .\] 
+  Then $P(\gamma)$ holds for every ordinal $\gamma$.
+\end{thm}
+
+A proof of this statement can be found in \cite{Schimmerling2011-li} but for our
+purposes it suffices to notice that this allows us to prove things for all
+ordinals. In practice, we break this up into cases in a similar fashion to what
+we do for regular induction on the natural numbers.
+
+\begin{enumerate}
+  \item Does the statement hold for $0$
+  \item Assume that $P(\alpha)$ is true, show that this implies  $P(\alpha + 1)$.
+  \item Suppose that $\beta$ is a limit ordinal and $P(\alpha)$ holds for all
+    $\alpha < \beta$ show that this implies $P(\beta)$.
+\end{enumerate}
+
+This effectively allows us to do induction on ordinals and allows us to perform
+``induction style'' proofs in settings where that might not necessarily be
+appropriate. We will see more examples of this in the next section.
+
+The last tool that we are going to need from this section are Cardinals. We
+have an intuitive notion for what it means for finite sets to be of the same
+size. In particular this is when they have the same number of elements. For
+infinite sets we need a better criteria for when they are the ``same size''.
+Suppose that $(A, <)$ is any well order. By a result in
+\cite{Schimmerling2011-li} we know that there is a least ordinal $\alpha$ 
+isomorphic to $(A, <)$. We define $|A| = \alpha$.
+
+\begin{defn}[Cardinal]
+  We say that an ordinal $\alpha$ is a cardinal if $|\alpha| = \alpha$.
+\end{defn}
+
+We see that $\omega$ is a cardinal, we can define $\omega_1 = \{\alpha:
+|\alpha| = \omega\}$. In a similar fashion we can define $\omega_{2}
+= \{\alpha: |\alpha| = \omega_{1}\}$ and so on. Notice that $\omega_1$ is
+uncountable as if $\omega_1$ was countable then $\omega_1 \in \omega_1$ which
+is not possible. Similarly for the case of $\omega_2$ and so on. This means
+that each $\omega_{i}$ has strictly larger cardinality than the previous. In
+this fashion we can describe the cardinal $\omega_{\alpha}$ for an ordinal
+$\alpha$ using transfinite induction.
+\begin{enumerate}
+  \item The base case is $\omega_0 = \omega$
+  \item For the successor case suppose that we have defined $\omega_{\alpha}$ 
+    then we can define $\omega_{\alpha + 1} := \{\beta: |\beta| = \alpha\} $
+  \item If $\alpha$ is a limit ordinal we can define $\omega_{\alpha}
+    = \sup_{\beta < \alpha} \omega_{\alpha}$
+\end{enumerate}
+Since ordinals and cardinals are fundamentally different things, we want to make that
+distinction. When talking about the ordinal $\omega_{\alpha}$ we will write it
+as such. When we are talking about the cardinal $\omega_{\alpha}$ we write it
+as $\aleph_{\alpha}$. The important thing from this section to know is that if
+$A$ is a set and $|A| = \kappa$ then we can ``enumerate'' this set by
+considering the ordinal $\beta$ corresponding to $\kappa$ and writing $A
+= \{a_{\alpha}: \alpha < \beta\}$. This is something that we already do for
+countable sets. For example we can enumerate $\mathbb{Q}$ by $\{q_1, q_2,
+\ldots, q_{n}\}$, we are now just extending that notion to an infinite setting.

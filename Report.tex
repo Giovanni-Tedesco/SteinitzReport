@@ -1,0 +1,117 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{geometry}\geometry{margin=1in}
+\usepackage{float}
+
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{mathpazo}
+%\usepackage{lmodern}
+%\usepackage{stix}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage{mdframed}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+\usepackage[capitalise]{cleveref}
+
+%\declaretheorem[name=Theorem,numberwithin=section]{thm}
+
+\usepackage{graphicx}
+\graphicspath{ {./Images/} }
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+  \def\svgwidth{\columnwidth}
+  \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+\newmdtheoremenv{theo}{Problem}
+\setcounter{theo}{72}
+
+\newtheoremstyle{break}% name
+  {}%         Space above, empty = 'usual value'
+  {}%         Space below
+  {\itshape}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{problem}[thm]{Problem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{propn}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{remark}[thm]{Remark}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\ent}{ent}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\divr}{div}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\Vol}{Vol}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ACF}{ACF}
+
+\begin{document}
+  \begin{titlepage}
+   \begin{center}
+       \vspace*{1cm}
+       {\huge
+       \textbf{Summary of Steinitz's Theorem}}\
+
+       \vspace{1.5cm}
+       
+       {\LARGE
+       \textbf{Final Report}}
+
+       \vspace*{0.5cm}
+
+       {\Large
+       \textbf{Mat498: Model Theory}}
+
+       \vspace{0.8cm}
+       \textbf{Giovanni Tedesco}
+       \vspace{0.8cm}
+   \end{center}
+  \end{titlepage}
+  \tableofcontents
+  \newpage
+
+  \section{Background}%
+  \label{sec:Background}
+  \input{./Background/Background.tex}
+
+  \newpage
+
+  \section{Steinitz's Theorem}%
+  \label{sec:Stenitz's Theorem}
+  \input{./MainTheorem/MainTheorem.tex}
+
+  \newpage
+  \bibliographystyle{plain}
+  \bibliography{./report}
+
+\end{document}

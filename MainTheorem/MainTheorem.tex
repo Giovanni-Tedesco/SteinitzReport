@@ -1,0 +1,56 @@
+We now know enough to begin proving Steinitz's Theorem. First let's
+recall the statement of \cref{thm:steinitz}
+
+\steinitz*
+
+Next we recall the following two results from \cref{sec:Algebraic Background}.
+
+\algextend*
+
+\transextend*
+
+The first result allows us to create algebraic extensions, the next one allows
+us to create transcendental extensions. Combining these two results with the
+back and forth method and transfinite induction is going to enable us to give
+a proof of \cref{thm:steinitz}
+
+\begin{proof}[Proof of \cref{thm:steinitz}]
+  Suppose that $M$ and $N$ are algebraically closed fields of characteristic
+  0 such that $|M| = |N| = \kappa > \aleph_{0}$. We enumerate $M$ and $N$ as
+  \[
+  M = \{a_{\alpha}: \alpha < \kappa\} \qquad and \qquad N = \{b_{\alpha}:
+  \alpha < \kappa\} 
+  .\] 
+
+  We now wish to construct a sequence of field extensions $E_0 \subseteq E_1
+  \subseteq E_{\alpha} \subseteq \ldots \subseteq M$ and $K_0 \subseteq K_1
+  \subseteq \ldots \subseteq K_{\alpha} \subseteq N$ as well as a sequence of
+  functions $f_0 \subseteq f_1 \subseteq \ldots f_{\alpha} \subseteq \ldots$
+  such that $f_{\alpha}: E_{\alpha} \to K_{\alpha}$ is a partial isomorphism.
+  Since $M$ and $N$ are of characteristic zero we know that both of their prime
+  fields are $\mathbb{Q}$. This gives us our base case $f_0: \mathbb{Q} \to
+  \mathbb{Q}$ which is given by the identity map (as there are no non-trivial
+  automorphisms of $\mathbb{Q}$).
+
+  Next we handle the successor case. Let $\beta = \alpha + 1$.
+  Suppose that we have constructed subfields
+  $E_{\alpha}$ and $K_{\alpha}$ as well as an isomorphism $f_{\alpha}:
+  E_{\alpha} \to K_{\alpha}$. We are going to do both the back and the forth
+  part in one step. First suppose that $b_{\beta} \in N \setminus K_{\alpha}$ then by
+  either \cref{propn:algextend} or \cref{propn:existtrans} there is an $a \in
+  M \setminus E_{\alpha}$ and an extension $f'_{\alpha}: E_{\alpha}(a) \to
+  K_{\alpha}(b)$. Now suppose that $c \in M \setminus E_{\alpha}(a)$ then once
+  again by the appropriate proposition there is a $d \in N \setminus
+  K_{\alpha}(b)$ and an extension $f''_{\alpha}: E_{\alpha}(c) \to
+  E_{\alpha}(d)$. Thus we can take $f_{\beta} = f''$ and $E_{\beta}
+  = E_{\alpha}(c)$ and $K_{\beta} = K_{\alpha}(d)$. As we needed.
+
+  Lastly in the limit case we can take $f_{\alpha} = \bigcup_{\beta < \alpha}
+  f_{\beta}$, $E_{\alpha} = \bigcup_{\beta < \alpha} E_{\beta}$ and $K_{\alpha}
+  = \bigcup_{\beta < \alpha} K_{\beta}$.
+
+  Therefore using transfinite induction we can define this recursively for all
+  ordinals (including $\kappa$). The resulting function is an isomorphism as
+  a union of partial isomorphisms. As we needed.
+\end{proof}
+
