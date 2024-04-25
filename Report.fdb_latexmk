@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex Report"] 1713974821 "Report.aux" "Report.bbl" "Report" 1713975233
+["bibtex Report"] 1714002983 "Report.aux" "Report.bbl" "Report" 1714003243
   "./report.bib" 1713558525 415 5502ca7af8ea0a933220d6c25ce0718b ""
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "Report.aux" 1713975233 9556 41314fb521211f6990ece88ff975e6ff "pdflatex"
+  "Report.aux" 1714003243 8554 2eb4b0056a5e004ddc1f65559c187836 "pdflatex"
   (generated)
   "Report.bbl"
   "Report.blg"
-["pdflatex"] 1713975232 "Report.tex" "Report.pdf" "Report" 1713975233
+["pdflatex"] 1714003243 "Report.tex" "Report.pdf" "Report" 1714003243
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1136768653 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -220,16 +220,16 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1656513561 2826444 5d801339c28068b7fec4493fafa53da7 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "Background/AlgebraicBackground.tex" 1713974261 12497 cb0d41ae314343105797968612d5440a ""
+  "Background/AlgebraicBackground.tex" 1714003241 11119 f7bbb56aa11745bda2769be31011ce83 ""
   "Background/BackAndForth.tex" 1713974921 4110 a05c9f243d24bbaf6404901e4eb91d16 ""
   "Background/Background.tex" 1713970741 940 fd40174c8c1ca578957a940c56314f0e ""
-  "Background/Ordinals.tex" 1713974663 8247 702704f27ccb8e92f91e5a720f5d609e ""
-  "MainTheorem/MainTheorem.tex" 1713975231 2775 28c25bdade5ef9a030cf5be705934cbe ""
-  "Report.aux" 1713975233 9556 41314fb521211f6990ece88ff975e6ff "pdflatex"
-  "Report.bbl" 1713974821 361 d3364ae7a95bd9a165ef30c296f4f8bf "bibtex Report"
-  "Report.out" 1713975233 819 bc0c0025e0f80079a3aef1449f0252f3 "pdflatex"
+  "Background/Ordinals.tex" 1714001107 6263 505e81836c186962995fa3f7a9a82c10 ""
+  "MainTheorem/MainTheorem.tex" 1713986143 2775 28c25bdade5ef9a030cf5be705934cbe ""
+  "Report.aux" 1714003243 8554 2eb4b0056a5e004ddc1f65559c187836 "pdflatex"
+  "Report.bbl" 1714002983 361 d3364ae7a95bd9a165ef30c296f4f8bf "bibtex Report"
+  "Report.out" 1714003243 819 bc0c0025e0f80079a3aef1449f0252f3 "pdflatex"
   "Report.tex" 1713971099 2721 ba90d604f521a1b77d7e7aeb48b004f4 ""
-  "Report.toc" 1713975233 448 0278f1acd7efbd301c71bf24672c3b9d "pdflatex"
+  "Report.toc" 1714003243 447 5240b60029be0840a8e32a035e9d28cd "pdflatex"
   (generated)
   "Report.aux"
   "Report.log"

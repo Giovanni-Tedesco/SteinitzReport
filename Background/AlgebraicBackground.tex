@@ -3,7 +3,7 @@ understand both the statment of the problem and the proof. First recall the
 definition of a field:
 
 \begin{propn}
-  Every field homomorphism is injective 
+  Every field homomorphism is injective.
 \end{propn}
 \begin{proof}
   Suppose that $F, K$ are fields and let $\phi: F \to K$ a field homomorphism
@@ -65,9 +65,14 @@ containing $\alpha$ as a root is known as the minimal polynomial of $\alpha$
 and is denoted $m_{\alpha}$.
 
 \begin{defn}[Algebraic Extension]
-  Suppose that $\alpha$ is algebraic over $F$. We define $F(\alpha)$ as the
-  smallest field which contains $F$ and $\alpha$.
+  Let $E$ be a field extension of $F$ and suppose that $\alpha \in E$ is
+  algebraic over $F$. We define $F(\alpha)$ to be the smallest subfield of $E$ 
+  contaning both $F$ and $\alpha$. 
 \end{defn}
+
+Another way to work with algebraic extensions is to notice that $F(\alpha)$ is
+all of the polynomials in $\alpha$, namely expressions of the form $a_0
++ a_1\alpha + \ldots + a_{n}\alpha^{n}$.
 
 We know that algebraic numbers satsify some polynomial $p(x)$ over $F$, 
 so we can think of the field $F(\alpha)$ as adding in the root of this
@@ -75,36 +80,21 @@ polynomial. One important fact that we are going to make heavy use of later is
 that we are able to lift isomorphisms of fields up to isomorphisms of their
 extensions. In the case of algebraic extensions this is relatively
 straightforward since we know ``exactly'' what algebraic numbers look like in
-terms of the ring of polynomials. 
+terms of the ring of polynomials. Going forward we assume that all fields are
+contained in some universal algebraically closed field. In the characteristic
+zero case this is the complex numbers. This allows us to say things like, let
+$\alpha$ be algebraic over $F$ without concerning ourselves with where $\alpha$
+comes from.
 
 We first notice that we can lift isomorphisms between fields to an isomorphism
-between their polynomial rings. 
+between their polynomial rings.
 
 \begin{lemma}\label{lemma:extendtoring}
   Let $F$ and $K$ be fields and if $\phi: F \to K$ be an isomorphism between
-  them then there exists a (ring-)isomorphism $\overline{\phi}: F[x] \to
+  them then we can lift $\phi$ to a ring isomorphism $\overline{\phi}: F[x] \to
   K[x]$. Moreover, if $f(x)$ is irreducible over $F$ then $\overline{\phi}(f)$ 
   is irreducible over $K$.
 \end{lemma}
-%\begin{proof}
-%  We define $\overline{\phi}: F[x] \to K[x]$ by
-%  \[
-%  f(x) = \sum_{i=1}^{n} a_{i}x^{i} \mapsto \sum_{i=1}^{n} \phi(a_{i})x^{i}
-%  .\] 
-%  This is an isomorphism because $\phi$ is an isomorphism (details left as an
-%  exercise to the reader). Now suppose that $f$ is an irreducible polynomial
-%  over $F$ and suppose that $\overline{\phi}(f)$ is not irreducible. This means
-%  that there are polynomials $a(x), b(x)$ such that $\overline{\phi}(f)(x)
-%  = a(x)b(x)$. However this means that
-%  \[
-%  f = \overline{\phi}^{-1}(\overline{\phi}(f)) = \overline{\phi}^{-1}(a(x)b(x))
-%  = \overline{\phi}^{-1}(a(x))\overline{\phi}^{-1}(b(x))
-%  .\] 
-%  This implies that one of $\overline{\phi}^{-1}(a(x)),
-%  \overline{\phi}^{-1}(b(x))$ must be the identity map and so one of $a(x)$ or
-%  $b(x)$ is identity. Thus $\overline{\phi}(f)$ is irreducible as needed.
-%\end{proof}
-
 
 \begin{restatable}{propn}{algextend}
 \label{propn:algextend}
@@ -114,60 +104,38 @@ between their polynomial rings.
   F(\alpha) \to K(\beta)$
 \end{restatable}
 \begin{proof}
-  If $\alpha$ is algebraic over $F$ then we know that $\alpha$ is the root of
+   If $\alpha$ is algebraic over $F$ then we know that $\alpha$ is the root of
   some minimal polynomial $m_{\alpha}(x) = x^{n} + a_{n-1}x^{n-1} + \ldots
   + a_1x + a_0 \in F[x]$. Now since $\phi$ is an isomorphism of fields we get
   an irreducible polynomial 
   \[
     \overline{m_{\alpha}}(x) = x^{n} + \phi(a_{n-1})x^{n-1} + \ldots
     + \phi(a_1)x + a_0 \in K[x]
+  .\]  
+  Notice that since this polynomial is irreducible it is the minimal polynomial
+  of some $\beta$ algebraic over $K$. Now consider the map $\overline{\phi}:
+  F(\alpha) \to K(\beta)$ given by
+  \[
+    a_0 + a_1\alpha + \ldots + a_{n}\alpha^{n} \mapsto 
+    \phi(a_0) + \phi(a_1)\beta + \ldots + \phi(a_{n})\beta^{n}
   .\] 
-  Now by \cref{lemma:extendtoring} we get an isomorphism $\overline{\phi}: F[x]
-  \to K[x]$ we notice that under this map the ideal $(m_{\alpha})$ is mapped to
-  $(\overline{m_{\alpha}})$. Lastly we note that $F[x]/(m_{\alpha})$ is
-  isomorphic to $F(\alpha)$ and $K[x]/(\overline{m_{\alpha})}$ is isomorphic to
-  $K[\beta]$ by definition, label these isomorphisms $\psi_{\alpha}$ and
-  $\psi_{\beta}$ respectively. This gives the following diagram:
-%  \begin{equation}
-%  \begin{tikzcd}
-%    F \arrow[r, "\cong"] \arrow[d, hook]& K \arrow[d, hook] \\ 
-%    F[x] \arrow[r,"\cong"] \arrow[d, "\pi"] & K[x] \arrow[d,"\pi"] \\
-%    F[x]/(m_{\alpha}) \arrow[r, "\sigma"] \arrow[d, "\psi_{\alpha}"] & 
-%                                          K[x]/(\overline{m_{\alpha}})
-%                                          \arrow[d,"\psi_{\beta}"]\\
-%    F(\alpha) \arrow[r] & K(\beta) \\
-%  \end{tikzcd}
-%  \end{equation}
-  \begin{equation}
-  \begin{tikzcd}
-    F  \arrow[r,hook] \arrow[d,"\phi"] & F[x] \arrow[r] \arrow[d,"\overline{\phi}"] 
-                                        & F[x]/(m_{\alpha})
-    \arrow[r,"\psi_{\alpha}"] \arrow[d,"\sigma"] & F(\alpha) \arrow[d,dashed] \\
-    K \arrow[r,hook] & K[x] \arrow[r] & K[x]/(\overline{m_{\alpha}})
-    \arrow[r,"\psi_{\beta}"] & K(\beta)
-  \end{tikzcd}
-  \end{equation}
-  
-  We notice that the map $\sigma: F[x]/(m_{\alpha}) \to
-  K[x]/(\overline{m_{\alpha}})$ is an isomorphism since $\overline{\phi}$ is an
-  isomorphism. Now reading off the diagram we get that the map
-  $\psi_{\beta}g\psi_{\alpha}^{-1}$ is the isomorphism we require.
+  We now need to verify that this is an isomorphism. The fact that this is
+  well defined is clear $\phi$ is well defined and that elements in $F(\alpha)$ 
+  are uniquely represented by their coefficients. We see that this function is
+  also a bijection since we can give an inverse
+  \[
+    b_0 + b_1\beta + \ldots + b_{n}\beta^{n} \mapsto \phi^{-1}(b_0)
+    + \phi^{-1}(b_1)\beta + \ldots \phi^{-1}(b_n)\beta^{n}
+  .\] 
+  This inverse is well defined for the same reasons as above and thus $\phi$ is
+  an isomorphism as we needed.
 \end{proof}
 
 Moving on from algebraic numbers we are now interested in exploring the second
 class, trancendental numbers.  These are all numbers which are not the root of 
-any polynomial over the ground field. 
+any polynomial over the ground field. In particular if $E$ is a field extension
+of $F$, $\alpha \in E$ is trancendental if it is not algebraic over $F$.
 
-\begin{defn}[Trancendental Number]
-  Suppose that $E$ is some field extension of $F$ and let $\alpha \in E$. We
-  say that $\alpha$ is trancendental over $F$ if it is not algebraic over $F$.
-\end{defn}
-
-\begin{defn}[Trancendental Extension]
-  Similar to the case of algebraic extensions suppose that $\alpha$ is
-  trancendental over $F$ then we define $F(\alpha)$ as the smallest field
-  containing both $\alpha$ and $F$.
-\end{defn}
 
 Recall that our goal is to prove an analogous result to \cref{propn:algextend}
 for trancendental numbers / extensions. In order to do this we are first going
@@ -255,7 +223,7 @@ Now knowing this we can prove our main result for trancendental numbers.
   and the isomorphism between $K(x)$ and $K(\beta)$ as $\psi_{\beta}$.
   Additionally by \cref{lemma:lifttoquot} there is an isomorphism $\phi':
   F(x) \to K(x)$ which lifts $\phi$ to an isomorphism between the rational
-  polynomials. Fromt these we get the following diagram:
+  polynomials. From these we get the following diagram:
   \begin{equation}
   \begin{tikzcd}
     F  \arrow[rr] \arrow[d, hook] & & K \arrow[d, hook] \\

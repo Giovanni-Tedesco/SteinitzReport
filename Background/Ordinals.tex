@@ -4,35 +4,34 @@ natural numbers and allows us to perform a similar process on using what are
 known as ordinals.
 
 Before we can talk about what ordinals are, it is important for us to introduce
-some other concepts first.
+some other concepts first. Suppose we have a set $X$ recall that a linear order
+is a relation $<$ on $X$ satisfying the following properties:
+\begin{enumerate}
+  \item Irreflexive: $\neg(a < a)$
+  \item Transitive: If $a < b$ and $b < c$ then $a < c$.
+  \item Linearity: For all $x,y \in X$ either $x < y, x = y$ or $y < x$.
+\end{enumerate}
 
-\begin{defn}[Linear Ordering]
-  A linear order is a set $X$ and a relation $< \subseteq X \times X$ that
-  satisfies the following properites:
-  \begin{enumerate}
-    \item Irreflexive: $\neg a < a$
-    \item Transitive: If $a < b$ and $b < c$ then $a < c$.
-    \item Linearity: For all $x,y \in X$ either $x < y, x = y$ or $y < x$.
-  \end{enumerate}
-\end{defn}
+We are going to focus on a specific type of linear order known as a well order.
 
 \begin{defn}[Well-Orders]
   A linear order $(X, <)$ is said to be a well order if every $S \subseteq X$
   has a minimal element.
 \end{defn}
 
-Consider the two examples above. We see that while they are both certainly
-linear orders, we see that the natural numbers are a well order as any subset
-of the natural numbers has a minimal element. Notice that neither $\mathbb{Q}$
-or $\mathbb{Z}$ with their usual ordering are well orders as neither
-$\mathbb{Q}$ nor $\mathbb{Z}$ has a minimal element.
+If $(X, <_X)$ and $(Y, <_Y)$ are linear orders we say that a bijective map
+$\phi: X \to Y$ is an isomorphism of linear orders if for all $x, y \in X$ we
+have that if $x < y$ then $\phi(x) < \phi(y)$. We say that $(X, <_X), (Y, <_Y)$
+are isomorphic if there is a linear order isomorphism between them.
 
-Something that is worth mentioning is that by the Axiom of Choice we can
-place a well order on every set. The above examples of $\mathbb{Q}$ and
-$\mathbb{Z}$ have well orders, but that does not mean that they are well
-ordered in their usual order.
+Something that is worth noting is that one consequence of the axiom of choice
+is known as the Well Ordering Principle. The well ordering principle states
+that on every set there exists an ordering which is a well ordering. Notice
+that neither $\mathbb{Q}$ nor $\mathbb{Z}$ are well orders in their usual
+ordering as they don't have a least element. The well ordering principle tells
+us that there exist orderings on both $\mathbb{Q}$ and $\mathbb{Z}$.\\
 
-Let's look at the ``set theorists natural numbers''. One of the main things we
+Next let look at the ``set theorists natural numbers''. One of the main things we
 can try and do to motivate the definition of an ordinal is to turn everything
 we care about working with into sets. The main goal of an ordinal is to
 extend a sort of ``order'' into an (uncountbly) infinite setting. First lets
@@ -52,49 +51,22 @@ Or we can re-write this as
   3 &= \{0,1,2\} 
 .\end{align*}
 
-We can continue this process onwards and it gives us the natural numbers
-$\omega = \{1, 2, 3, \ldots\}$. But where do we go from here? Well naturally we
-can continue on doing what we were doing. Notice that in the previous process
-$n + 1 = n \cup \{n\}$. We are going to do the exact same thing now. We take
-$\omega + 1 = \omega \cup \{\omega\}$. We can again do this infinitely and that
-gives us $\omega + \omega$. Repeating a similar process for multiplication and
-exponentiation and onwards allows us to continue this process further and
-further. Notice that at each step we are doing one of 2 things. We are either
-adding a new set, for example in the case of $\omega + 1$, or we are taking the
-union of many sets, for example $\omega = \bigcup_{n \in \mathbb{N}} n$. Going
-forward these are going to be known respectively as the successor case, and the
-limit case. 
-
-Stepping back for a moment we look at the ``set theorists natural numbers''
-again. Notice here that $2 \in 3$ by the definition of the set but we also have
-that $1 \subseteq 3$ when we look at their definition as sets. This is true
-beyond just the naturals. Notice that $\omega + 1 = \omega \cup \{\omega\}$.
-Thus not only is $\omega \in \omega + 1$ but $\omega \subseteq \omega + 1$.
+Notice that these sets have the property that containment and inclusion are the
+same thing. For example $2 \in 3$ and $2 \subseteq 3$ based on how $2$ and $3$ 
+are defined.  This is what is known as a transitive set.
 
 \begin{defn}[Transitive]
   A set $X$ is said to be transitive if whenever $x \in X$ then $x \subseteq
   X$.
 \end{defn}
 
-Notice that the sets we defined above are all transitive. For example $2 \in 3$
-and $2 \subseteq 3$ based on how $2$ and $3$ are defined. 
+We are now able to give the defintion of an ordinal.
 
 \begin{defn}[Ordinal]
   An ordinal is a transitive set $\alpha$ such that $(\alpha, \in)$ is
   a well-ordering.
 \end{defn}
 
-This in particular tells us that $\alpha = \{\beta: \beta < \alpha\}$. 
-There are two main types of ordinals. Successor ordinals, and limit ordinals.
-
-\begin{defn}[Successor and Limit Ordinals]
-  We say that an ordinal $\beta$ is a successor ordinal if $\beta = \alpha + 1$ 
-  for some ordinal $\alpha$. Ordinals which are not successor ordinals are
-  called limit ordinals.
-\end{defn}
-
-The details about how ordinals work can be found in \cite{Schimmerling2011-li} however for our purposes we are going to assume the following
-facts about ordinals.
 
 \begin{lemma}
   The class of ordinals is well ordered by inclusion. In particular if
@@ -102,6 +74,19 @@ facts about ordinals.
   < \alpha$ or $\alpha = \beta$. Here $<$ is being used interchangably with
   $\in$.
 \end{lemma}
+
+Ordinals, as the name implies, are designed to capture and extend the notion of
+``order'' beyond just the natural numbers. Indeed if we take any well ordering
+$(A, <)$ there is a unique ordinal $\alpha$ which is isomorphic to $A$. So any
+well ordered set corresponds to a unique ordinal.
+
+There are two types of ordinals, successor and limit. We say that $\alpha$ is
+a successor ordinal if $\alpha = \beta + 1 = \beta \cup \{\beta\}$ 
+for some ordinal $\beta$. We say that $\alpha$ is a limit ordinal 
+if $\alpha = \bigcup_{\beta < \alpha} \beta$. To illustrate this consider the 
+natural numbers $\omega$. Notice that each natural number is a successor 
+ordinal for example $2 = 1 + 1$, $3 = 2 + 1$, and so on. However the $\omega$
+itself is a limit ordinal as $\omega = \bigcup_{n \in \mathbb{N}} n$.
 
 \begin{lemma}
   If $\alpha$ is an ordinal then $\alpha + 1 = \alpha \cup \{\alpha\}$ is an
@@ -111,8 +96,10 @@ facts about ordinals.
   < \gamma$.
 \end{lemma}
 
-With these facts in mind we are now able to state the most important results
-from this section
+The details about how ordinals work can be found in \cite{Schimmerling2011-li}
+however for our purposes we are simply going to assume the above
+facts about ordinals. With these facts in mind we are now able to state the most 
+important results from this section
 
 \begin{thm}[Transfinite Induction]
   Suppose that $P(\alpha)$ is a statement in a variable $\alpha$. Assume that
@@ -139,39 +126,14 @@ This effectively allows us to do induction on ordinals and allows us to perform
 ``induction style'' proofs in settings where that might not necessarily be
 appropriate. We will see more examples of this in the next section.
 
-The last tool that we are going to need from this section are Cardinals. We
-have an intuitive notion for what it means for finite sets to be of the same
-size. In particular this is when they have the same number of elements. For
-infinite sets we need a better criteria for when they are the ``same size''.
-Suppose that $(A, <)$ is any well order. By a result in
-\cite{Schimmerling2011-li} we know that there is a least ordinal $\alpha$ 
-isomorphic to $(A, <)$. We define $|A| = \alpha$.
+The last tool that we are going to need from this section are cardinals. We
+want to relate our usual notion of cardinality to the above discussion about
+ordinals. Recall that two sets have the same cardinality if there is
+a bijection between them. Now let $A$ be a set, by the well ordering principle
+we can assign $A$ a well ordering $<$. We define the cardinality of $A$,
+denoted $|A|$, to be the least ordinal $\alpha$ in bijection with $A$. The
+importance of cardinals for our purposes is that they are going to allow us
+``enumerate'' sets, similar to how one would enumerate $\mathbb{Z}$ or
+$\mathbb{Q}$. Suppose that $|A| = \kappa$ then since $\kappa$ is an ordinal we
+can enumerate $A$ as $\{a_{\alpha}: \alpha < \kappa\}$.
 
-\begin{defn}[Cardinal]
-  We say that an ordinal $\alpha$ is a cardinal if $|\alpha| = \alpha$.
-\end{defn}
-
-We see that $\omega$ is a cardinal, we can define $\omega_1 = \{\alpha:
-|\alpha| = \omega\}$. In a similar fashion we can define $\omega_{2}
-= \{\alpha: |\alpha| = \omega_{1}\}$ and so on. Notice that $\omega_1$ is
-uncountable as if $\omega_1$ was countable then $\omega_1 \in \omega_1$ which
-is not possible. Similarly for the case of $\omega_2$ and so on. This means
-that each $\omega_{i}$ has strictly larger cardinality than the previous. In
-this fashion we can describe the cardinal $\omega_{\alpha}$ for an ordinal
-$\alpha$ using transfinite induction.
-\begin{enumerate}
-  \item The base case is $\omega_0 = \omega$
-  \item For the successor case suppose that we have defined $\omega_{\alpha}$ 
-    then we can define $\omega_{\alpha + 1} := \{\beta: |\beta| = \alpha\} $
-  \item If $\alpha$ is a limit ordinal we can define $\omega_{\alpha}
-    = \sup_{\beta < \alpha} \omega_{\alpha}$
-\end{enumerate}
-Since ordinals and cardinals are fundamentally different things, we want to make that
-distinction. When talking about the ordinal $\omega_{\alpha}$ we will write it
-as such. When we are talking about the cardinal $\omega_{\alpha}$ we write it
-as $\aleph_{\alpha}$. The important thing from this section to know is that if
-$A$ is a set and $|A| = \kappa$ then we can ``enumerate'' this set by
-considering the ordinal $\beta$ corresponding to $\kappa$ and writing $A
-= \{a_{\alpha}: \alpha < \beta\}$. This is something that we already do for
-countable sets. For example we can enumerate $\mathbb{Q}$ by $\{q_1, q_2,
-\ldots, q_{n}\}$, we are now just extending that notion to an infinite setting.
